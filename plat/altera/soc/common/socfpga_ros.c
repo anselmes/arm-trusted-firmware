@@ -173,11 +173,11 @@ uint32_t ros_qspi_get_ssbl_offset(unsigned long *offset)
 
 	if (strncmp(spt.partition[img_index].name, FACTORY_IMAGE,
 		SPT_PARTITION_NAME_LENGTH) == 0U) {
-		strcpy_s(ssbl_name, SPT_PARTITION_NAME_LENGTH, FACTORY_SSBL);
+		strcpy_secure(ssbl_name, SPT_PARTITION_NAME_LENGTH, FACTORY_SSBL);
 	} else {
-		strcpy_s(ssbl_name, SPT_PARTITION_NAME_LENGTH, SSBL_PREFIX);
-		len = strnlen_s(ssbl_name, SPT_PARTITION_NAME_LENGTH);
-		strcpy_s(ssbl_name + len, SPT_PARTITION_NAME_LENGTH - len,
+		strcpy_secure(ssbl_name, SPT_PARTITION_NAME_LENGTH, SSBL_PREFIX);
+		len = strnlen_secure(ssbl_name, SPT_PARTITION_NAME_LENGTH);
+		strcpy_secure(ssbl_name + len, SPT_PARTITION_NAME_LENGTH - len,
 			 spt.partition[img_index].name);
 	}
 
