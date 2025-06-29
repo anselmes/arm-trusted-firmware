@@ -159,7 +159,6 @@ void bl2_el3_early_platform_setup(u_register_t x0 __unused,
 
 void bl2_el3_plat_arch_setup(void)
 {
-	handoff reverse_handoff_ptr;
 	unsigned long offset = 0;
 
 	struct cdns_sdmmc_params params = EMMC_INIT_PARAMS((uintptr_t) &cdns_desc,
@@ -167,6 +166,8 @@ void bl2_el3_plat_arch_setup(void)
 
 	mmc_info.mmc_dev_type = MMC_DEVICE_TYPE;
 	mmc_info.ocr_voltage = OCR_3_3_3_4 | OCR_3_2_3_3;
+
+	INFO("SDMMC/NAND clock is %u\n", clkmgr_get_rate(CLKMGR_SDMMC_CLK_ID));
 
 	/* Request ownership and direct access to QSPI */
 	mailbox_hps_qspi_enable();
@@ -191,7 +192,7 @@ void bl2_el3_plat_arch_setup(void)
 
 	case BOOT_SOURCE_NAND:
 		NOTICE("SOCFPGA: NAND boot\n");
-		nand_init(&reverse_handoff_ptr);
+		nand_init();
 		socfpga_io_setup(boot_source, PLAT_NAND_DATA_BASE);
 		break;
 
