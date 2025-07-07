@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022, ARM Limited and Contributors. All rights reserved.
  * Copyright (c) 2022-2023, Intel Corporation. All rights reserved.
- * Copyright (c) 2024, Altera Corporation. All rights reserved.
+ * Copyright (c) 2024-2025, Altera Corporation. All rights reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
@@ -449,7 +449,7 @@
  * To accommodate SDMCLK set to 200MHz
  * TODO: To support various clock range
  */
-#define SDEMMC_SDCLK				25000000
+#define SDEMMC_SDCLK				50000000
 
 enum sd_opcode {
 	SD_GO_IDLE_STATE = 0,
